@@ -1,6 +1,5 @@
 import extend from 'node.extend';
 
-
 class Resource {
     constructor(
         client,
@@ -30,13 +29,12 @@ class Resource {
             this.client.options.api_root,
         ];
 
-	let api_version = this.options.api_version;
-	if (
+	    let api_version = this.options.api_version;
+	    if (
             typeof(api_version) != 'undefined' &&
             null !== api_version
-	) {
-	    path.push(api_version);
-
+	    ) {
+	        path.push(api_version);
         }
 
         path.push(this.options.path);
@@ -68,10 +66,9 @@ class Resource {
         if (
             !this.options.auth_required &&
             null === this.client._credentials &&
-	    this.client.options.api_key
+	        this.client.options.api_key
         ){
             data.client_id = this.client.options.api_key;
-
         }
 
         uri = this._assembleUri(id);
@@ -147,6 +144,7 @@ class Resource {
         }
 
         let method = 'DELETE';
+        let uri = this._assembleUri(id);
 
         return this.request(
             method,
@@ -162,7 +160,6 @@ class Resource {
         headers
     ) {
         let method = 'OPTIONS';
-
         let uri = this._assembleUri();
 
         return this.request(
